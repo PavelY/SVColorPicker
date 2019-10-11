@@ -52,7 +52,7 @@ open class ColorPickerView: UIView {
                                     width: rect.width, height: ColorPickerViewConstant.uiSliderHeightDefault)
             slider = UISlider(frame: sliderRect)
             slider.setValue(0, animated: false)
-            slider.addTarget(self, action: #selector(onSliderValueChange), for: UIControlEvents.valueChanged)
+            slider.addTarget(self, action: #selector(onSliderValueChange), for: UIControl.Event.valueChanged)
             slider.minimumTrackTintColor = UIColor.clear
             slider.maximumTrackTintColor = UIColor.clear
             
@@ -78,7 +78,7 @@ open class ColorPickerView: UIView {
     
     //MARK:- Internal Functions
     //MARK:-
-    func onSliderValueChange(slider: UISlider) {
+    @objc func onSliderValueChange(slider: UISlider) {
         
         currentHueValue = CGFloat(slider.value)
         currentSliderColor = UIColor(hue: currentHueValue, saturation: 1, brightness: 1, alpha: 1)
